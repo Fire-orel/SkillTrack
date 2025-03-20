@@ -6,7 +6,15 @@ import "../styles/ProfilePage.css"; // Подключаем CSS
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [activeSection, setActiveSection] = useState("Личные данные");
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    setIsAuthenticated(false);
+    navigate("/");
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -68,38 +76,70 @@ export default function ProfilePage() {
     }
   };
 
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+  };
+
   if (loading) return <p className="loading">Загрузка...</p>;
   if (!user) return <p className="loading">Пользователь не найден.</p>;
 
   return (
-    <div className="profile-container">
-      {/* Левая панель */}
+
+    <div>
+      <header className="top-bar">
+        <div className="logo-area"></div>
+        <nav className="top-menu">
+          <a href="#">Профориентация</a>
+          <a href="#">Обучение</a>
+          <a href="#">Работа</a>
+        </nav>
+        <div className="user-options">
+          {/* <a href="#">Личный кабинет</a> */}
+          {/* <a href="#">Выйти</a> */}
+          <button onClick={handleLogout}>Выйти</button>
+        </div>
+      </header>
+      <div className="profile-container">
       <aside className="sidebar">
         <h2 className="sidebar-title">Личный кабинет</h2>
         <ul className="menu">
-          <li className="menu-item active">Личные данные</li>
-          <li className="menu-item">Портфолио</li>
-          <li className="menu-item">Образование</li>
-          <li className="menu-item">Навыки</li>
-          <li className="menu-item">Маршрутная карта</li>
-          <li className="menu-item">Достижения</li>
+          <li className={`menu-item ${activeSection === "Личные данные" ? "active" : ""}`} onClick={() => handleSectionChange("Личные данные")}>
+            Личные данные
+          </li>
+          <li className={`menu-item ${activeSection === "Портфолио" ? "active" : ""}`} onClick={() => handleSectionChange("Портфолио")}>
+            Портфолио
+          </li>
+          <li className={`menu-item ${activeSection === "Образование" ? "active" : ""}`} onClick={() => handleSectionChange("Образование")}>
+            Образование
+          </li>
+          <li className={`menu-item ${activeSection === "Навыки" ? "active" : ""}`} onClick={() => handleSectionChange("Навыки")}>
+            Навыки
+          </li>
+          <li className={`menu-item ${activeSection === "Маршрутная карта" ? "active" : ""}`} onClick={() => handleSectionChange("Маршрутная карта")}>
+            Маршрутная карта
+          </li>
         </ul>
       </aside>
-
-      {/* Контент */}
       <main className="profile-content">
-        <h1 className="profile-title">Личные данные</h1>
-        <div className="profile-form">
-          <h2 className="form-title">Анкета</h2>
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="surname" className="input-field" placeholder="Фамилия" defaultValue={user.surname} />
-            <input type="text" name="name" className="input-field" placeholder="Имя" defaultValue={user.name} />
-            <input type="text" name="patronimyc" className="input-field" placeholder="Отчество" defaultValue={user.patronimyc} />
-            <input type="date" name="birthdate" className="input-field" defaultValue={user.birthdate} />
-            <button type="submit" className="save-button">Сохранить изменения</button>
-          </form>
-        </div>
+        <h1 className="profile-title">{activeSection}</h1>
+        {activeSection === "Личные данные" && (
+          <div className="profile-form">
+            <h2 className="form-title">Анкета</h2>
+            <form>
+              <input type="text" name="surname" className="input-field" placeholder="Фамилия" defaultValue={user.surname} />
+              <input type="text" name="name" className="input-field" placeholder="Имя" defaultValue={user.name} />
+              <input type="text" name="patronimyc" className="input-field" placeholder="Отчество" defaultValue={user.patronimyc} />
+              <input type="date" name="birthdate" className="input-field" defaultValue={user.birthdate} />
+              <button type="submit" className="save-button">Сохранить изменения</button>
+            </form>
+          </div>
+        )}
+        {activeSection === "Портфолио" && <div>Содержимое раздела Портфолио</div>}
+        {activeSection === "Образование" && <div>Содержимое раздела Образование</div>}
+        {activeSection === "Навыки" && <div>Содержимое раздела Навыки</div>}
+        {activeSection === "Маршрутная карта" && <div>Содержимое раздела Маршрутная карта</div>}
       </main>
+    </div>
     </div>
   );
 }
