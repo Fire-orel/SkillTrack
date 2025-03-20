@@ -15,14 +15,14 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route
+        {/* <Route
           path="/users"
           element={
             <ProtectedRoute>
               <UsersPage />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/profile"
           element={

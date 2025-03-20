@@ -32,12 +32,20 @@ class CustomUserListView(APIView):
 
 # 🔹 API для одного пользователя (GET, DELETE)
 class CustomUserDetailView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         user = get_object_or_404(CustomUser, pk=pk)
         serializer = CustomUserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):  # 🔥 Добавляем обновление данных
+        user = get_object_or_404(CustomUser, pk=pk)
+        serializer = CustomUserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
         user = get_object_or_404(CustomUser, pk=pk)

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { login } from "../api/auth.jsx";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -13,47 +13,36 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/token/", {
-        username,
-        password,
-      });
-
-      localStorage.setItem("token", response.data.access);
-      navigate("/profile");
+      await login(username, password);
+      navigate("/"); // Перенаправление после успешного входа
     } catch (err) {
       setError("Неверный логин или пароль");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Вход</h2>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+    <div className="login-container">
+      <div className="login-box">
+        <h2 className="login-title">Вход</h2>
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label className="block text-gray-700">Логин:</label>
-            <input
-              type="text"
-              className="w-full p-2 border rounded"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Пароль:</label>
-            <input
-              type="password"
-              className="w-full p-2 border rounded"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-            Войти
-          </button>
+          <input
+            type="text"
+            className="input-field"
+            placeholder="Логин"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            className="input-field"
+            placeholder="Пароль"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="login-button">Войти</button>
         </form>
       </div>
     </div>
