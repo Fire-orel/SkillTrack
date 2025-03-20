@@ -32,7 +32,7 @@ class CustomUserListView(APIView):
 
 # 🔹 API для одного пользователя (GET, DELETE)
 class CustomUserDetailView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request, pk):
         user = get_object_or_404(CustomUser, pk=pk)

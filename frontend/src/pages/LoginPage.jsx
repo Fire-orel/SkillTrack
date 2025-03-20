@@ -19,7 +19,7 @@ export default function LoginPage() {
       });
 
       localStorage.setItem("token", response.data.access);
-      navigate("/users");
+      navigate("/profile");
     } catch (err) {
       setError("Неверный логин или пароль");
     }

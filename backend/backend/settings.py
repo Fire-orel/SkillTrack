@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'core',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -144,3 +144,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # 🔹 Разрешаем запросы с фронтенда
 ]
+
+AUTH_USER_MODEL = 'core.CustomUser'

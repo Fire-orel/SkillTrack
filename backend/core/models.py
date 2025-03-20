@@ -1,14 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User, AbstractUser
 
-class CustomUser(models.Model):
-    surname = models.CharField(max_length=35)
-    name = models.CharField(max_length=35)
-    patronimyc = models.CharField(max_length=35)
-    birthdate = models.DateField()
-    phone = models.CharField(max_length=12, unique=True)
+class CustomUser(AbstractUser):
+    surname = models.CharField(max_length=35,blank=True, null=True)
+    name = models.CharField(max_length=35,blank=True, null=True)
+    patronimyc = models.CharField(max_length=35,blank=True, null=True)
+    birthdate = models.DateField(blank=True, null=True)
+    phone = models.CharField(max_length=12, unique=True,blank=True, null=True)
 
-    def __str__(self):
-        return f"{self.surname} {self.name}"
+    # def __str__(self):
+    #     return f""
 
 class Edu(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="education_entries")
