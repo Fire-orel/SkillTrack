@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,10 +42,12 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'core',
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "corsheaders.middleware.CorsMiddleware",  # 🔹 Добавляем сюда
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,6 +85,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.getenv('postgres'),
+    #     'USER': os.getenv('POSTGRES_USER', 'career_user'),
+    #     'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'career_password'),
+    #     'HOST': 'db',  # Имя сервиса в docker-compose
+    #     'PORT': '5432',
+    #     'OPTIONS': {
+    #         'client_encoding': 'UTF8',
+    #     },
+    # }
 }
 
 
@@ -127,4 +141,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'core.CustomUser'
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # 🔹 Разрешаем запросы с фронтенда
+]
