@@ -50,10 +50,11 @@ class Profi(models.Model):
 
 class Certificate(models.Model):
 
-    link = models.URLField(max_length=300)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="certificates")
+    file = models.FileField(upload_to="certificates/")
 
     def __str__(self):
-        return self.link
+        return self.user.name
 
 
 class Skill(models.Model):
@@ -83,7 +84,7 @@ class Competence(models.Model):
 
 
 class Works(models.Model):
-
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="works")
     place = models.CharField(max_length=100)
     profi = models.ForeignKey(Profi, on_delete=models.CASCADE, related_name="work_experiences")
     date_start = models.DateField()
@@ -95,14 +96,23 @@ class Works(models.Model):
 
 class Achievements(models.Model):
 
-    link = models.URLField(max_length=300)
-
-    def __str__(self):
-        return self.link
-
-
-class UserAchievement(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="achievements")
+    file = models.FileField(upload_to="achievements/")
 
     def __str__(self):
-        return f"Achievement for {self.user.surname} {self.user.name}"
+        return self.user.name
+
+
+# class UserAchievement(models.Model):
+#     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="achievements")
+
+#     def __str__(self):
+#         return f"Achievement for {self.user.surname} {self.user.name}"
+
+
+class Links(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="links")
+    url = models.URLField(unique=True)
+
+    def __str__(self):
+        return self.url

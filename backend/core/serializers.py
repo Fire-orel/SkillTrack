@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
     CustomUser, Edu, Sphere, Hashtag, Profi, Certificate, Skill,
-    ProfiCompet, Competence, Works, Achievements, UserAchievement
+    ProfiCompet, Competence, Works, Achievements
 )
 
 class EduSerializer(serializers.ModelSerializer):
@@ -41,7 +41,7 @@ class ProfiSerializer(serializers.ModelSerializer):
 class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
-        fields = ["id", "link"]
+        fields = ["id", "user",'file']
 
 
 class SkillSerializer(serializers.ModelSerializer):
@@ -76,12 +76,12 @@ class WorksSerializer(serializers.ModelSerializer):
 class AchievementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Achievements
-        fields = ["id", "link"]
+        fields = ["id", "user","file"]
 
 
-class UserAchievementSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
+# class UserAchievementSerializer(serializers.ModelSerializer):
+#     user = serializers.PrimaryKeyRelatedField(read_only=True)
 
-    class Meta:
-        model = UserAchievement
-        fields = ["id", "user"]
+#     class Meta:
+#         model = UserAchievement
+#         fields = ["id", "user"]

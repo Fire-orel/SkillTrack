@@ -11,7 +11,7 @@ const api = axios.create({
 // ✅ **Добавляем `Authorization: Bearer <token>` во все запросы**
 api.interceptors.request.use((config) => {
   const access_token = localStorage.getItem("access_token");
-  
+
   if (access_token) {
     config.headers["Authorization"] = `Bearer ${access_token}`;
   }
@@ -25,8 +25,8 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       console.warn("Access token истек, пытаемся обновить...");
       try {
+
         const data = await refreshToken();
-        console.log("Новый токен после обновления:", data.access);
         localStorage.setItem("access_token", data.access);
         error.config.headers["Authorization"] = `Bearer ${data.access}`;
         return axios(error.config); // Повторяем запрос с новым токеном

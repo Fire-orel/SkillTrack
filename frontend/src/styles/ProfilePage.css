@@ -5,9 +5,6 @@
   background-color: #ffffff;
 }
 
-
-
-
 /* Верхняя панель */
 .top-bar {
   display: flex;
@@ -69,14 +66,6 @@
   color: #ff6600;
 }
 
-
-
-
-
-
-
-
-/* Левая панель */
 /* Левая панель */
 .sidebar {
   width: 250px;
@@ -128,7 +117,6 @@
   color: #d3d3d3;
 }
 
-
 /* Основной контент */
 .profile-content {
   flex: 1;
@@ -160,7 +148,7 @@
 }
 
 .input-field {
-  width: 100%;
+  width: calc(100% - 20px); /* Чтобы все поля выровнялись по ширине */
   padding: 12px;
   margin-bottom: 10px;
   background-color: #eee;
@@ -168,6 +156,7 @@
   border-radius: 8px;
   font-size: 16px;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .input-field:focus {
@@ -210,4 +199,149 @@
   height: 8px;
   background-color: #ff7a00;
   border-radius: 50%;
+}
+
+/* Стиль для кастомной кнопки загрузки файлов */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.custom-file-upload:hover {
+  background-color: #e64a19;
+}
+
+/* Убираем стандартное отображение input file */
+.custom-file-upload input {
+  display: none;
+}
+
+/* Контейнер загрузки */
+.portfolio-section {
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fffaf0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width:none;
+  /* margin: 20px auto; */
+
+}
+
+/* Список загруженных файлов */
+.portfolio-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Элементы списка сертификатов */
+.certificate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%; /* Убедиться, что контейнер занимает всю ширину */
+  box-sizing: border-box;
+}
+
+.certificate-item a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  flex-grow: 1; /* Расширяет ссылку, чтобы она занимала максимум доступного места */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Запрещает перенос текста */
+  max-width: calc(100% - 80px); /* Ограничивает ширину ссылки, оставляя место для кнопки */
+}
+
+.delete-button {
+  background: #ff3d00;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  flex-shrink: 0; /* Запрещает уменьшение кнопки */
+  margin-left: 10px; /* Добавляет небольшой отступ от ссылки */
+}
+
+.delete-button:hover {
+  background: #d32f2f;
+}
+
+/* Расположение для .portfolio-links и .portfolio-files в 2 колонки */
+.portfolio-grid {
+  display: flex;
+  gap: 50%; /* расстояние между колонками */
+  justify-content: space-between;
+}
+
+/* Убедитесь, что у .portfolio-links и .portfolio-files заданы эти стили */
+.portfolio-links,
+.portfolio-files {
+  flex: 1;
+  min-width: 0; /* чтобы содержимое не «расталкивало» блоки */
+}
+
+
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.link-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.link-item a {
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  max-width: calc(100% - 100px); /* остаётся место под кнопку */
+}
+
+.link-item a:hover {
+  text-decoration: underline;
+}
+
+.link-item .delete-button {
+  background: #ff3d00;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: background 0.3s ease-in-out;
+  flex-shrink: 0;
+}
+
+.link-item .delete-button:hover {
+  background: #d32f2f;
 }

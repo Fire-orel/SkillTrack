@@ -1,7 +1,7 @@
 
 from django.urls import path
 from .views import (
-    EduView, SphereView, HashtagView, ProfiView,CustomUserListView,CustomUserDetailView
+    EduView, SphereView, HashtagView, ProfiView,CustomUserListView,CustomUserDetailView,CertificateView,AchievementsView,WorksView,LinksView
 )
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -24,4 +24,14 @@ urlpatterns = [
 
     path('professions/', ProfiView.as_view(), name='profi-list-create'),
     path('professions/<int:pk>/', ProfiView.as_view(), name='profi-detail'),
+
+
+    path('certificates/', CertificateView.as_view(), name='certificates'),
+    path('certificates/<int:pk>/', CertificateView.as_view(), name='certificates'),
+    path('achievements/', AchievementsView.as_view(), name='achievements'),
+    path('works/', WorksView.as_view(), name='works'),
+
+
+    path("links/", LinksView.as_view(), name="links"),
+    path("links/<int:pk>/", LinksView.as_view(), name="link-detail"),
 ]
