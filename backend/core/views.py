@@ -206,13 +206,21 @@ class WorksView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        request.data["user"] = request.user.id
         serializer = WorksSerializer(data=request.data)
+        print(request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+    def delete(self, request, work_id):
+        try:
+            work = Works.objects.get(id=work_id, user=request.user)  # Удаляем только записи текущего пользователя
+            work.delete()
+            return Response({"message": "Опыт работы удалён"}, status=status.HTTP_204_NO_CONTENT)
+        except Works.DoesNotExist:
+            return Response({"error": "Опыт работы не найден"}, status=status.HTTP_404_NOT_FOUND)
 
 
 class LinksView(APIView):

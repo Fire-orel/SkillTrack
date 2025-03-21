@@ -377,11 +377,29 @@ export default function ProfilePage() {
   const handleSubmitOpit = () => {
     api.post("/works/", newWork, { headers })
       .then(() => {
-        setIsModalOpen(false);
+        setIsModalOpenOpit(false);
         setWorks([...works, newWork]);
       })
       .catch(error => console.error("Ошибка добавления опыта работы:", error));
   };
+  const handleDeleteWork = (workId) => {
+    api.delete(`/works/${workId}/`, { headers })
+      .then(() => {
+        setWorks(works.filter(work => work.id !== workId));
+      })
+      .catch(error => console.error("Ошибка удаления опыта работы:", error));
+  };
+
+
+  const calculateMonths = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = end ? new Date(end) : new Date();
+    const yearsDiff = endDate.getFullYear() - startDate.getFullYear();
+    const monthsDiff = endDate.getMonth() - startDate.getMonth();
+    return yearsDiff * 12 + monthsDiff;
+  };
+
+  const totalExperience = works.reduce((sum, work) => sum + calculateMonths(work.date_start, work.date_end), 0);
 
 
   if (loading) return <p className="loading">Загрузка...</p>;
@@ -699,34 +717,36 @@ export default function ProfilePage() {
 
           {activeSection === "Опыт работы" && (
             <div className="work-experience-section">
-              <h2>Опыт работы</h2>
+              <h2>Опыт работы {totalExperience} месяцев</h2>
               {works.length === 0 ? (
                 <div className="no-experience">
                   <h3>Опыт работы 0 месяцев</h3>
                   <p>Начните карьеру прямо сейчас!</p>
-                  {/* <img src="/static/images/no-experience.png" alt="Рекомендации по поиску работы" className="no-experience-image" /> */}
-
                 </div>
               ) : (
                 <div className="work-experience-list">
-                  {works.map((work, index) => (
-                    <div key={index} className="work-card">
-                      <h3>{work.position}</h3>
-                      <p><strong>Компания:</strong> {work.company}</p>
-                      <p><strong>Период:</strong> {work.start_date} - {work.end_date || "Настоящее время"}</p>
-                      <p>{work.description}</p>
-                    </div>
-                  ))}
+                  {works.map((work, index) => {
+                    const workMonths = calculateMonths(work.date_start, work.date_end);
+                    return (
+                      <div key={work.id} className="work-card">
+                        <div className="work-card-content">
+                          <h3>{work.profi}</h3>
+                          <p><strong>Компания:</strong> {work.place}</p>
+                          <p><strong>Период:</strong> {work.date_start} - {work.date_end || "Настоящее время"}</p>
+                          <p><strong>Продолжительность:</strong> {workMonths} месяцев</p>
+                          <p>{work.description}</p>
+                        </div>
+                        <button className="delete-work-button" onClick={() =>{console.log("Удаляем ID:", work); handleDeleteWork(work.id);}}>Удалить</button>
+                      </div>
+                    );
+                  })}
                 </div>
-
               )}
               <div className="add-work-card" onClick={handleOpenModal}>
-                    <span>+</span>
+                <span>+</span>
               </div>
             </div>
           )}
-
-
 
 
 
@@ -788,18 +808,49 @@ export default function ProfilePage() {
 
 
       {isModalOpenOpit && (
-        <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div className="opit-modal-overlay" onClick={handleCloseModal}>
+          <div className="opit-modal" onClick={(e) => e.stopPropagation()}>
             <h3>Добавить опыт работы</h3>
-            <input type="text" name="place" placeholder="Место работы" value={newWork.place} onChange={handleInputChange} />
-            <input type="text" name="profi" placeholder="Должность" value={newWork.profi} onChange={handleInputChange} />
-            <input type="date" name="date_start" placeholder="Дата начала" value={newWork.date_start} onChange={handleInputChange} />
-            <input type="date" name="date_end" placeholder="Дата окончания" value={newWork.date_end} onChange={handleInputChange} />
-            <button onClick={handleSubmit}>Добавить</button>
-            <button onClick={handleCloseModal}>Отмена</button>
+            <input
+              type="text"
+              name="place"
+              className="opit-modal-input"
+              placeholder="Место работы"
+              value={newWork.place}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="profi"
+              className="opit-modal-input"
+              placeholder="Должность"
+              value={newWork.profi}
+              onChange={handleInputChange}
+            />
+            <input
+              type="date"
+              name="date_start"
+              className="opit-modal-input"
+              placeholder="Дата начала"
+              value={newWork.date_start}
+              onChange={handleInputChange}
+            />
+            <input
+              type="date"
+              name="date_end"
+              className="opit-modal-input"
+              placeholder="Дата окончания"
+              value={newWork.date_end}
+              onChange={handleInputChange}
+            />
+            <div className="opit-modal-buttons">
+              <button type="submit" onClick={handleSubmitOpit}>Добавить</button>
+              <button type="button" onClick={handleCloseModal}>Отмена</button>
+            </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }

@@ -91,7 +91,7 @@ class Competence(models.Model):
 class Works(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="works")
     place = models.CharField(max_length=100)
-    profi = models.ForeignKey(Profi, on_delete=models.CASCADE, related_name="work_experiences")
+    profi = models.CharField(max_length=100)
     date_start = models.DateField()
     date_end = models.DateField(blank=True, null=True)
 

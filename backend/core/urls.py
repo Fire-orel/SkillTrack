@@ -30,6 +30,7 @@ urlpatterns = [
     path('certificates/<int:pk>/', CertificateView.as_view(), name='certificates'),
     path('achievements/', AchievementsView.as_view(), name='achievements'),
     path('works/', WorksView.as_view(), name='works'),
+    path('works/<int:work_id>/', WorksView.as_view(), name='works'),
 
 
     path("links/", LinksView.as_view(), name="links"),

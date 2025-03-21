@@ -66,11 +66,11 @@ class CompetenceSerializer(serializers.ModelSerializer):
 
 
 class WorksSerializer(serializers.ModelSerializer):
-    profi = ProfiSerializer(read_only=True)
+    # profi = ProfiSerializer(read_only=True)
 
     class Meta:
         model = Works
-        fields = ["id", "place", "profi", "date_start", "date_end"]
+        fields = ["id","user", "place", "profi", "date_start", "date_end"]
 
 
 class AchievementsSerializer(serializers.ModelSerializer):
