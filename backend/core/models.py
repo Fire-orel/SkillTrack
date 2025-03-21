@@ -7,15 +7,19 @@ class CustomUser(AbstractUser):
     patronimyc = models.CharField(max_length=35,blank=True, null=True)
     birthdate = models.DateField(blank=True, null=True)
     phone = models.CharField(max_length=12, unique=True,blank=True, null=True)
+    city=models.CharField(max_length=100,blank=True, null=True)
+    category=models.CharField(max_length=35,blank=True, null=True)
 
     # def __str__(self):
     #     return f""
 
 class Edu(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="education_entries")
+    program=models.CharField(max_length=300)
     num = models.CharField(max_length=30)
-    degree = models.CharField(max_length=15)
-    year = models.DateField()
+    degree = models.CharField(max_length=150)
+    year_beginning = models.DateField()
+    year_ending = models.DateField()
     university = models.CharField(max_length=100)
 
     def __str__(self):
@@ -59,6 +63,7 @@ class Certificate(models.Model):
 
 class Skill(models.Model):
 
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=30, unique=True)
     level = models.CharField(max_length=10, blank=True, null=True)
 

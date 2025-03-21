@@ -1,7 +1,7 @@
 
 from django.urls import path
 from .views import (
-    EduView, SphereView, HashtagView, ProfiView,CustomUserListView,CustomUserDetailView,CertificateView,AchievementsView,WorksView,LinksView
+    EduView, SphereView, HashtagView, ProfiView,CustomUserListView,CustomUserDetailView,CertificateView,AchievementsView,WorksView,LinksView,SkillView,CareerRecommendationView,SberParserView,HHVacancyParserView
 )
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -34,4 +34,13 @@ urlpatterns = [
 
     path("links/", LinksView.as_view(), name="links"),
     path("links/<int:pk>/", LinksView.as_view(), name="link-detail"),
+
+    path('skills/', SkillView.as_view(), name='skills-list-create'),
+    path('skills/<int:pk>/', SkillView.as_view(), name='skill-delete'),
+
+    path('career-recommendations/', CareerRecommendationView.as_view(), name='career-recommendations'),
+    path('sber-parser/', SberParserView.as_view(), name='sber-parser'),
+
+
+    path('hh-parser/', HHVacancyParserView.as_view(), name='hh-parser'),
 ]

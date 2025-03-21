@@ -1,4 +1,10 @@
-/* Основной контейнер */
+
+
+* {
+  font-family: 'Roboto', sans-serif;
+
+}
+
 .profile-container {
   display: flex;
   min-height: 100vh;
@@ -35,7 +41,7 @@
 .top-menu {
   display: flex;
   gap: 10px;
-  margin-left: -60%; /* Более сильное смещение текста ближе к фигуре */
+  margin-left: -50%; /* Более сильное смещение текста ближе к фигуре */
 }
 
 .top-menu a {
@@ -344,4 +350,757 @@
 
 .link-item .delete-button:hover {
   background: #d32f2f;
+}
+
+
+
+
+
+.education-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Контейнер для списка */
+.education-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Карточки образования */
+.education-item {
+
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 320px; /* Увеличиваем минимальную ширину */
+  max-width: 500px; /* Ограничиваем максимальную ширину */
+
+  flex: 1 1 380px; /* Делаем их шире и гибкими */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+.trash-icon {
+
+  bottom: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: #d32f2f;
+  width: 30px;
+  height: 30px;
+}
+
+.trash-icon:hover {
+  transform: scale(1.2);
+}
+
+.trash-img {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+
+
+
+
+/* Высота блоков остается одинаковой */
+.education-list .education-item {
+  height: 100%;
+}
+
+/* Заголовки внутри карточек */
+.education-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Кнопка добавления */
+.add-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px dashed #ff6600;
+  height: 100%;
+  min-height: 190px;
+  min-width: 320px; /* Делаем кнопку "Добавить" такой же ширины */
+  max-width: 500px;
+}
+
+/* Модальное окно */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  width: 420px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+  border-top: 5px solid #ff6600;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+.modal-input:focus {
+  border-color: #ff6600;
+  outline: none;
+}
+
+.modal-content button {
+  padding: 10px 16px;
+  margin-top: 15px;
+  margin-right: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.modal-content button[type="submit"] {
+  background: linear-gradient(135deg, #ff6600, #ffaa33);
+  color: white;
+}
+
+.modal-content button[type="submit"]:hover {
+  background: linear-gradient(135deg, #e65c00, #ff9900);
+}
+
+.modal-content button[type="button"] {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal-content button[type="button"]:hover {
+  background-color: #ccc;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+/* Стили для тестирования */
+.test-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.test-image img {
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.test-content {
+  max-width: 500px;
+  text-align: left;
+}
+
+.test-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.test-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.test-button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #ff6600, #ffaa33);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease-in-out;
+}
+
+.test-button:hover {
+  background: linear-gradient(135deg, #e65c00, #ff9900);
+}
+
+
+
+
+
+
+
+
+
+
+.skills-section {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.skills-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-skill {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-skill-btn {
+  padding: 10px 15px;
+  background-color: #ff7f00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Две колонки */
+  gap: 20px 40px; /* Расстояние между карточками */
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  min-width: 300px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.remove-skill {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 12px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  margin-left: 10px;
+}
+
+.remove-skill:hover {
+  opacity: 1;
+}
+
+.skill-level {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #666;
+}
+
+.skill-slider {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 5px;
+  height: 6px;
+}
+
+.retake-test {
+  font-size: 12px;
+  color: #ff7f00;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+
+
+.career-interests {
+  width: 100%;
+  max-width: 800px; /* Увеличил ширину */
+  margin: 20px auto;
+  padding: 25px; /* Добавил отступы */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.career-interest {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.career-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.progress-container {
+  position: relative;
+  height: 30px; /* Немного увеличил высоту */
+  display: flex;
+  align-items: center;
+  padding-right: 50px; /* Добавил отступ справа для текста */
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.progress-fill {
+  height: 8px;
+  background: linear-gradient(to right, #ff8c00, #ff4500);
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-icon {
+  position: absolute;
+  top: -15px;
+  width: 20px;
+  height: 20px;
+  background: url('/static/images/walking-icon.png') no-repeat center center;
+  background-size: contain;
+  transition: left 0.5s ease-in-out;
+}
+
+.progress-label {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.progress-text {
+  position: absolute;
+  right: -20px; /* Сместил немного левее */
+  top: 90%;
+  transform: translateY(-50%); /* Центрируем */
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  white-space: nowrap; /* Чтобы не переносился */
+}
+
+
+.recommendation-btn {
+  background: linear-gradient(to right, #ff8c00, #ff4500);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.recommendation-btn:hover {
+  background: linear-gradient(to right, #ff4500, #ff8c00);
+  transform: scale(1.05);
+}
+
+
+
+/* ... другие стили ... */
+
+.articles-section {
+  padding: 30px;
+  background-color: #f9f9f9;
+}
+
+.articles-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.articles-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.article-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.article-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.article-card a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.article-card a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.vacancies-section {
+  padding: 30px;
+  background-color: #f4f4f4;
+}
+
+.vacancies-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.vacancies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.vacancy-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.vacancy-card:hover {
+  transform: translateY(-5px);
+}
+
+.vacancy-card h3 {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.vacancy-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  max-height: 80px;
+  overflow: hidden;
+}
+
+.vacancy-card a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.vacancy-card a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* ... предыдущие стили ... */
+
+.work-experience-section {
+  padding: 30px;
+  /* background-color: #f4f4f4; */
+}
+
+.work-experience-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.work-experience-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.work-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.work-card:hover {
+  transform: translateY(-5px);
+}
+
+.work-card h3 {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.work-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.no-experience {
+  text-align: center;
+  padding: 40px;
+}
+
+.no-experience h3 {
+  font-size: 22px;
+  color: #222;
+}
+
+.no-experience p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.no-experience-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+
+
+
+.add-work-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px dashed #ff6600;
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+  min-height: 40px;
+  min-width: 50px; /* Делаем кнопку "Добавить" такой же ширины */
+  max-width: 500px;
+}
+
+
+
+/* Фон модального окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Контент внутри модального окна */
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  width: 420px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+  border-top: 5px solid #ff6600;
+}
+
+/* Заголовок модального окна */
+.modal h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Поля ввода */
+.modal input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+.modal input:focus {
+  border-color: #ff6600;
+  outline: none;
+}
+
+/* Кнопки */
+.modal button {
+  padding: 10px 16px;
+  margin-top: 15px;
+  margin-right: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Кнопка подтверждения */
+.modal button[type="submit"] {
+  background: linear-gradient(135deg, #ff6600, #ffaa33);
+  color: white;
+}
+
+.modal button[type="submit"]:hover {
+  background: linear-gradient(135deg, #e65c00, #ff9900);
+}
+
+/* Кнопка отмены */
+.modal button[type="button"] {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal button[type="button"]:hover {
+  background-color: #ccc;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

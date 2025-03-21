@@ -7,14 +7,14 @@ from .models import (
 class EduSerializer(serializers.ModelSerializer):
     class Meta:
         model = Edu
-        fields = ["id", "num", "degree", "year", "university"]
+        fields = ["id", "num", "degree", "year_beginning",'year_ending', "university",'program','user']
 
 class CustomUserSerializer(serializers.ModelSerializer):
     education = EduSerializer(many=True, read_only=True)  # Вложенный сериализатор
 
     class Meta:
         model = CustomUser
-        fields = ["id", "surname", "name", "patronimyc", "birthdate", "phone", "education"]
+        fields = ["id", "surname", "name", "patronimyc", "birthdate", "phone", "education","category",'city']
 
 
 class SphereSerializer(serializers.ModelSerializer):
@@ -47,7 +47,7 @@ class CertificateSerializer(serializers.ModelSerializer):
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
-        fields = ["id", "title", "level"]
+        fields = ["id", "title", "level","user"]
 
 
 class ProfiCompetSerializer(serializers.ModelSerializer):
