@@ -2,7 +2,7 @@ import { useState, useEffect, use } from "react";
 import api from "../api/api";
 import { useNavigate } from "react-router-dom";
 import "../styles/ProfilePage.css"; // Подключаем CSS
-
+import "../styles/ProfilePageMobile.css";
 
 
 import image4 from "../assets/image4.png";
@@ -413,7 +413,7 @@ export default function ProfilePage() {
         </div>
         <nav className="top-menu">
           <a href="#" onClick={() => setActiveSection("Тестирование")}>Профориентация</a>
-          <a href="#" onClick={() => setActiveSectionMeny("Обучение")}>Обучение</a>
+          <a href="#" onClick={() => handleSectionChange("Статьи")}>Статьи</a>
           <a href="#" onClick={() => setActiveSectionMeny("Работа")}>Работа</a>
           {/* <a href="#" onClick={() => setActiveSectionMeny("Статьи")}>Статьи</a> */}
           <a href="#" onClick={() => setActiveSectionMeny("Помощь")}>Помощь</a>

@@ -1,0 +1,716 @@
+/* ProfilePageMobile.css */
+@media (max-width: 768px) {
+
+    /* Базовые сбросы (при желании можно удалить или поменять) */
+    * {
+      font-family: 'Roboto', sans-serif;
+      /* Можно глобально уменьшить шрифт: */
+      /* font-size: 14px; */
+      box-sizing: border-box;
+    }
+
+    /***********************
+     *  Основная структура
+     ***********************/
+    .profile-container {
+      display: block;
+      min-height: auto;
+      background-color: #ffffff;
+    }
+
+    /* Верхняя панель */
+    .top-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: auto;
+      padding: 10px 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid #e5e5e5;
+    }
+
+    .logo-area {
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+      clip-path: none;
+      background: linear-gradient(135deg, #ff6600, #ffaa33);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+
+    .top-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      margin: 10px 0 0 0;
+    }
+
+    .top-menu a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .user-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .user-options a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* Левая панель (сайдбар) */
+    .sidebar {
+      width: 100%;
+      box-shadow: none;
+      padding: 20px 10px;
+      border-bottom: 2px solid #e5e5e5;
+    }
+
+    .sidebar-title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #ff6600;
+      font-weight: bold;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-item {
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .menu-item.active {
+      background-color: #eaeaea;
+      color: #aaaaaa;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 10px;
+    }
+
+    /* Основной контент */
+    .profile-content {
+      flex: none;
+      padding: 20px 10px;
+      display: block;
+      text-align: left;
+    }
+
+    .profile-title {
+      font-size: 24px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .profile-form {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      background-color: #eee;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .save-button {
+      width: 100%;
+      background-color: #ff6600;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Декоративные линии */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .divider-line {
+      width: 40px;
+      height: 2px;
+      background-color: #ff7a00;
+    }
+
+    .divider-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #ff7a00;
+      border-radius: 50%;
+    }
+
+    /* Кастомная кнопка загрузки файлов */
+    .custom-file-upload {
+      display: inline-block;
+      padding: 10px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      background-color: #ff5722;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .custom-file-upload input {
+      display: none;
+    }
+
+    /***********************
+     *  Раздел портфолио
+     ***********************/
+    .portfolio-section {
+      width: 100%;
+      padding: 20px 10px;
+      border-radius: 8px;
+      background: #fffaf0;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: none;
+    }
+
+    .portfolio-grid {
+      display: block;
+      gap: 0;
+    }
+
+    .portfolio-links,
+    .portfolio-files {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .certificate-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .certificate-item a {
+      max-width: 60%;
+      font-size: 14px;
+    }
+
+    .delete-button {
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+
+    .link-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .link-item a {
+      font-size: 14px;
+      max-width: 60%;
+    }
+
+    .link-item .delete-button {
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+
+    /***********************
+     *  Раздел образования
+     ***********************/
+    .education-section {
+      width: 100%;
+      margin: 20px 0;
+      text-align: center;
+      padding: 0 5px;
+    }
+
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .education-item {
+      width: 100%;
+      min-width: auto;
+      max-width: 100%;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Кнопка добавления */
+    .add-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px dashed #ff6600;
+      min-height: 100px;
+      margin: 10px 0;
+    }
+
+    /***********************
+     *  Модальное окно (пример)
+     ***********************/
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      border-top: 5px solid #ff6600;
+    }
+
+    .modal-content h2 {
+      font-size: 18px;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 14px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+
+    /***********************
+     *  Раздел тестирования
+     ***********************/
+    .test-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .test-image img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .test-content {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .test-content h2 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .test-button {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    /***********************
+     *  Раздел навыков
+     ***********************/
+    .skills-section {
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .skills-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .skills-input {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .input-skill {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .add-skill-btn {
+      padding: 10px;
+      background-color: #ff7f00;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .skill-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      position: relative;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skill-name {
+      font-size: 16px;
+    }
+
+    .remove-skill {
+      font-size: 12px;
+    }
+
+    .skill-level {
+      font-size: 14px;
+    }
+
+    .skill-slider {
+      width: 100%;
+      height: 6px;
+    }
+
+    /***********************
+     *  Раздел интересов (карьера)
+     ***********************/
+    .career-interests {
+      width: 100%;
+      max-width: 100%;
+      margin: 20px 0;
+      padding: 20px 10px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .career-interest {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .career-name {
+      font-size: 16px;
+    }
+
+    .progress-container {
+      position: relative;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      padding-right: 40px;
+    }
+
+    .progress-label {
+      top: -20px;
+      right: 0;
+      font-size: 14px;
+    }
+
+    .progress-text {
+      right: -10px;
+      top: 90%;
+      font-size: 12px;
+    }
+
+    .recommendation-btn {
+      font-size: 14px;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    /***********************
+     *  Раздел статей
+     ***********************/
+    .articles-section {
+      padding: 20px 10px;
+      background-color: #f9f9f9;
+    }
+
+    .articles-section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .article-card {
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .article-card p {
+      font-size: 14px;
+    }
+
+    /***********************
+     *  Раздел вакансий
+     ***********************/
+    .vacancies-section {
+      padding: 20px 10px;
+      background-color: #f4f4f4;
+    }
+
+    .vacancies-section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .vacancies-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .vacancy-card {
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      padding: 15px;
+    }
+
+    .vacancy-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .vacancy-card p {
+      font-size: 14px;
+    }
+
+    /***********************
+     *  Опыт работы
+     ***********************/
+    .work-experience-section {
+      padding: 20px 10px;
+    }
+
+    .work-experience-section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .work-experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .work-card {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      padding: 15px;
+    }
+
+    .work-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .work-card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .no-experience {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .no-experience h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .no-experience p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .no-experience-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .add-work-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px dashed #ff6600;
+      width: 100%;
+      min-height: 100px;
+      margin: 10px auto;
+    }
+
+    /***********************
+     *  Модальные окна опыта
+     ***********************/
+    .opit-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .opit-modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      border-top: 5px solid #ff6600;
+    }
+
+    .opit-modal h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .opit-modal-input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 14px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+
+    .opit-modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .opit-modal button {
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .opit-modal button[type="submit"] {
+      background: linear-gradient(135deg, #ff6600, #ffaa33);
+      color: white;
+    }
+
+    .opit-modal button[type="button"] {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+  }
